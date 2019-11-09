@@ -66,17 +66,29 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                 if (info.getInfoLink() != null) {
                     detailIntent.putExtra("INFOLINK", info.getInfoLink());
 
+                }else{
+                    detailIntent.putExtra("INFOLINK", "Info Link Not Available");
+
                 }
                 if (info.getTitle() != null) {
                     detailIntent.putExtra("TITLE", info.getTitle());
+
+                }else{
+                    detailIntent.putExtra("TITLE", "Title Not Available");
 
                 }
                 if (info.getDescription() != null) {
                     detailIntent.putExtra("DESCRIPTION", info.getDescription());
 
+                }else{
+                    detailIntent.putExtra("DESCRIPTION", "Description Not Available");
+
                 }
                 if (info.getAuthors() != null) {
                     detailIntent.putExtra("AUTHORS", TextUtils.join(", ", info.getAuthors()));
+
+                }else{
+                    detailIntent.putExtra("AUTHORS", "Authors Not Available");
 
                 }
 
