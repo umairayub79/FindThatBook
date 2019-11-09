@@ -3,7 +3,10 @@ package codes.umair.findthatbook.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,9 +17,11 @@ import codes.umair.findthatbook.R;
 
 public class BookDetailActivity extends AppCompatActivity {
 
-    TextView title,description,authors;
+    TextView title, description, authors;
     ImageView thumbnail;
-    String strTitle,strDescription,strAuthors,strThumbLink,strInfoLink;
+    Button btn_openLink;
+    String strTitle, strDescription, strAuthors, strThumbLink, strInfoLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +30,7 @@ public class BookDetailActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         authors = findViewById(R.id.authors);
         thumbnail = findViewById(R.id.thumbnail);
-
+        btn_openLink = findViewById(R.id.btn_openLink);
 
 
         Intent i = getIntent();
@@ -45,6 +50,15 @@ public class BookDetailActivity extends AppCompatActivity {
         authors.setText(strAuthors);
         description.setText(strDescription);
 
+        if (!strInfoLink.equals("Info Link Not Available")) {
 
+            btn_openLink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(strInfoLink));
+                    startActivity(browserIntent);
+                }
+            });
+        }
     }
 }
