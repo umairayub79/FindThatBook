@@ -40,7 +40,8 @@ public class BookDetailActivity extends AppCompatActivity {
         strThumbLink = i.getStringExtra("THUMBLINK");
         strInfoLink = i.getStringExtra("INFOLINK");
 
-        Toast.makeText(this, strThumbLink, Toast.LENGTH_SHORT).show();
+
+        setTitle(strTitle);
         Picasso.get()
                 .load(strThumbLink)
                 .centerCrop()

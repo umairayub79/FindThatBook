@@ -9,11 +9,6 @@
     android:padding="18dp"
     tools:context=".activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Find That Book!"
-        android:textSize="28sp" />
 
 
     <EditText
@@ -25,6 +20,7 @@
         android:inputType="text" />
 
     <Button
+        android:textAlignment="center"
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
