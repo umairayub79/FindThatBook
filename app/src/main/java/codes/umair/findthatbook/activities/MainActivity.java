@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<SearchResult> call, Response<SearchResult> response) {
                 SearchResult result = response.body();
-                if (result != null && result.getTotalItems() > 0){
-                    adapter.setData(MainActivity.this,result.getBooks());
+                if (result != null && result.getTotalItems() > 0) {
+                    adapter.setData(MainActivity.this, result.getBooks());
                 }
             }
 

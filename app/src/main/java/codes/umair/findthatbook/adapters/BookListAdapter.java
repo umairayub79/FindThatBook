@@ -35,7 +35,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
 
     @Override
     public void onBindViewHolder(final PostViewHolder holder, final int position) {
-
         Book book = data.get(position);
         final Book.BookInfo info = book.getInfo();
         if (info != null) {
@@ -45,9 +44,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
             }
             holder.description.setText(info.getDescription());
             if (info.getImageLinks() != null) {
-                String path = info.getImageLinks().get(THUMBNAIL_URI_KEY);
+                holder.path = info.getImageLinks().get(THUMBNAIL_URI_KEY);
                 Picasso.get()
-                        .load(path)
+                        .load(holder.path)
                         .centerCrop()
                         .fit()
                         .into(holder.image);
@@ -55,22 +54,36 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
             }
             holder.infoLink = info.getInfoLink();
         }
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent detailIntent = new Intent(context, BookDetailActivity.class);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detailIntent = new Intent(context, BookDetailActivity.class);
 
-
-                    detailIntent.putExtra("INFOLINK", info.getInfoLink());
-                    detailIntent.putExtra("TITLE", info.getTitle());
-                    detailIntent.putExtra("DESCRIPTION", info.getDescription());
-                    detailIntent.putExtra("AUTHORS", TextUtils.join(", ", info.getAuthors()));
-
-                    context.startActivity(detailIntent);
+                if (holder.path != null) {
+                    detailIntent.putExtra("THUMBLINK", holder.path);
 
                 }
-            });
+                if (info.getInfoLink() != null) {
+                    detailIntent.putExtra("INFOLINK", info.getInfoLink());
 
+                }
+                if (info.getTitle() != null) {
+                    detailIntent.putExtra("TITLE", info.getTitle());
+
+                }
+                if (info.getDescription() != null) {
+                    detailIntent.putExtra("DESCRIPTION", info.getDescription());
+
+                }
+                if (info.getAuthors() != null) {
+                    detailIntent.putExtra("AUTHORS", TextUtils.join(", ", info.getAuthors()));
+
+                }
+
+                context.startActivity(detailIntent);
+
+            }
+        });
 
 
     }
@@ -82,7 +95,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                 .inflate(R.layout.book_item, parent, false);
         return new PostViewHolder(itemView);
     }
-
 
 
     @Override
@@ -100,21 +112,23 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         return data.size();
     }
 
-    public void setData(Context context,List<Book> data){
+    public void setData(Context context, List<Book> data) {
         this.data = data;
         notifyDataSetChanged();
         this.context = context;
     }
 
-    public List<Book> getData(){
+    public List<Book> getData() {
         return data;
     }
+
     class PostViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
         public TextView title;
         public TextView authors;
         public TextView description;
         public String infoLink;
+        public String path;
 
 
         public PostViewHolder(View itemView) {
