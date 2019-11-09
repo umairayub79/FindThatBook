@@ -2,6 +2,7 @@ package codes.umair.findthatbook.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import codes.umair.findthatbook.R;
+import codes.umair.findthatbook.activities.BookDetailActivity;
 import codes.umair.findthatbook.models.Book;
 
 
@@ -29,24 +31,20 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
     private Context context;
     private static final String THUMBNAIL_URI_KEY = "smallThumbnail";
     private List<Book> data = new ArrayList<>();
-    private OnItemClickListener mListener;
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
-    }
 
     @Override
-    public void onBindViewHolder(PostViewHolder holder, int position) {
+    public void onBindViewHolder(final PostViewHolder holder, final int position) {
 
         Book book = data.get(position);
-        Book.BookInfo info = book.getInfo();
-        if (info != null){
+        final Book.BookInfo info = book.getInfo();
+        if (info != null) {
             holder.title.setText(info.getTitle());
-            if (info.getAuthors() != null){
-                holder.authors.setText(TextUtils.join(", ",info.getAuthors()));
+            if (info.getAuthors() != null) {
+                holder.authors.setText(TextUtils.join(", ", info.getAuthors()));
             }
             holder.description.setText(info.getDescription());
-            if (info.getImageLinks() != null){
+            if (info.getImageLinks() != null) {
                 String path = info.getImageLinks().get(THUMBNAIL_URI_KEY);
                 Picasso.get()
                         .load(path)
@@ -55,7 +53,24 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                         .into(holder.image);
 
             }
+            holder.infoLink = info.getInfoLink();
         }
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent detailIntent = new Intent(context, BookDetailActivity.class);
+
+
+                    detailIntent.putExtra("INFOLINK", info.getInfoLink());
+                    detailIntent.putExtra("TITLE", info.getTitle());
+                    detailIntent.putExtra("DESCRIPTION", info.getDescription());
+                    detailIntent.putExtra("AUTHORS", TextUtils.join(", ", info.getAuthors()));
+
+                    context.startActivity(detailIntent);
+
+                }
+            });
+
 
 
     }
@@ -68,9 +83,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         return new PostViewHolder(itemView);
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
+
 
     @Override
     public int getItemViewType(int position) {
@@ -87,9 +100,10 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         return data.size();
     }
 
-    public void setData(List<Book> data){
+    public void setData(Context context,List<Book> data){
         this.data = data;
         notifyDataSetChanged();
+        this.context = context;
     }
 
     public List<Book> getData(){
@@ -100,6 +114,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         public TextView title;
         public TextView authors;
         public TextView description;
+        public String infoLink;
 
 
         public PostViewHolder(View itemView) {
@@ -109,17 +124,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
             description = itemView.findViewById(R.id.description);
             authors = itemView.findViewById(R.id.authors);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener.onItemClick(position);
-                        }
-                    }
-                }
-            });
+
         }
     }
 }

@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<SearchResult> call, Response<SearchResult> response) {
                 SearchResult result = response.body();
                 if (result != null && result.getTotalItems() > 0){
-                    adapter.setData(result.getBooks());
+                    adapter.setData(MainActivity.this,result.getBooks());
                 }
             }
 
