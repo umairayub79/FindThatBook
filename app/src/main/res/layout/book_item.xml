@@ -9,7 +9,7 @@
     app:cardElevation="5dp">
 
     <LinearLayout
-        android:padding="10dp"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -26,19 +26,21 @@
             android:orientation="vertical">
 
             <TextView
+                android:maxLines="1"
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/authors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="4dp"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
+                android:maxLines="4"
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
