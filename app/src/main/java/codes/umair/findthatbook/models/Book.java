@@ -31,6 +31,14 @@ public class Book {
 
         private String title;
 
+        private String pageCount;
+
+        private String publisher;
+
+        private String publishedDate;
+
+        private String subtitle;
+
         private List<String> authors;
 
         private String description;
@@ -77,6 +85,38 @@ public class Book {
 
         public void setImageLinks(Map<String, String> imageLinks) {
             this.imageLinks = imageLinks;
+        }
+
+        public String getPageCount() {
+            return pageCount;
+        }
+
+        public void setPageCount(String pageCount) {
+            this.pageCount = pageCount;
+        }
+
+        public String getPublisher() {
+            return publisher;
+        }
+
+        public void setPublisher(String publisher) {
+            this.publisher = publisher;
+        }
+
+        public String getPublishedDate() {
+            return publishedDate;
+        }
+
+        public void setPublishedDate(String publishedDate) {
+            this.publishedDate = publishedDate;
+        }
+
+        public String getSubtitle() {
+            return subtitle;
+        }
+
+        public void setSubtitle(String subtitle) {
+            this.subtitle = subtitle;
         }
     }
 }

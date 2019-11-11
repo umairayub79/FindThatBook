@@ -38,11 +38,45 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         Book book = data.get(position);
         final Book.BookInfo info = book.getInfo();
         if (info != null) {
-            holder.title.setText(info.getTitle());
+
+            //Title
+            holder.strTitle = info.getTitle();
+            holder.title.setText(holder.strTitle);
+
+            //Subtitle
+            holder.strSubtitle = info.getSubtitle();
+
+            //Info Link
+            holder.infoLink = info.getInfoLink();
+
+            //PageCount
+            holder.strPageCount = info.getPageCount();
+
+            //Publisher
+            holder.strPublisher = info.getPublisher();
+
+            //PublishDate
+            holder.strPublishDate = info.getPublishedDate();
+
+            //Authors
             if (info.getAuthors() != null) {
-                holder.authors.setText(TextUtils.join(", ", info.getAuthors()));
+                holder.strAuthors = TextUtils.join(", ", info.getAuthors());
+                holder.authors.setText(holder.strAuthors);
+            } else {
+                holder.strAuthors = "Unavailable";
+                holder.authors.setText(holder.strAuthors);
             }
-            holder.description.setText(info.getDescription());
+
+            //Description
+            if (info.getDescription() != null) {
+                holder.strDescription = info.getDescription();
+                holder.description.setText(holder.strDescription);
+            } else {
+                holder.strDescription = "No Description available";
+                holder.description.setText(holder.strDescription);
+            }
+
+            //ImageLinks
             if (info.getImageLinks() != null) {
                 holder.path = info.getImageLinks().get(THUMBNAIL_URI_KEY);
                 Picasso.get()
@@ -52,7 +86,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                         .into(holder.image);
 
             }
-            holder.infoLink = info.getInfoLink();
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,29 +99,57 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                 if (info.getInfoLink() != null) {
                     detailIntent.putExtra("INFOLINK", info.getInfoLink());
 
-                }else{
+                } else {
                     detailIntent.putExtra("INFOLINK", "Info Link Not Available");
 
                 }
-                if (info.getTitle() != null) {
-                    detailIntent.putExtra("TITLE", info.getTitle());
+                if (holder.strTitle != null) {
+                    detailIntent.putExtra("TITLE", holder.strTitle);
 
-                }else{
+                } else {
                     detailIntent.putExtra("TITLE", "Title Not Available");
 
                 }
-                if (info.getDescription() != null) {
-                    detailIntent.putExtra("DESCRIPTION", info.getDescription());
+                if (holder.strSubtitle != null) {
+                    detailIntent.putExtra("SUBTITLE", holder.strSubtitle);
 
-                }else{
+                } else {
+                    detailIntent.putExtra("SUBTITLE", "Subtitle Not Available");
+
+                }
+                if (holder.strDescription != null) {
+                    detailIntent.putExtra("DESCRIPTION", holder.strDescription);
+
+                } else {
                     detailIntent.putExtra("DESCRIPTION", "Description Not Available");
 
                 }
-                if (info.getAuthors() != null) {
-                    detailIntent.putExtra("AUTHORS", TextUtils.join(", ", info.getAuthors()));
+                if (holder.strAuthors != null) {
+                    detailIntent.putExtra("AUTHORS", holder.strAuthors);
 
-                }else{
-                    detailIntent.putExtra("AUTHORS", "Authors Not Available");
+                } else {
+                    detailIntent.putExtra("AUTHORS", "Not Available");
+
+                }
+                if (holder.strPublishDate != null) {
+                    detailIntent.putExtra("PUBDATE", holder.strPublishDate);
+
+                } else {
+                    detailIntent.putExtra("PUBDATE", "Not Available");
+
+                }
+                if (holder.strPublisher != null) {
+                    detailIntent.putExtra("PUB", holder.strPublisher);
+
+                } else {
+                    detailIntent.putExtra("PUB", "Not Available");
+
+                }
+                if (holder.strPageCount != null) {
+                    detailIntent.putExtra("PAGES", holder.strPageCount);
+
+                } else {
+                    detailIntent.putExtra("PAGES", "Uknown number of ");
 
                 }
 
@@ -141,6 +202,13 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         public TextView description;
         public String infoLink;
         public String path;
+        public String strTitle;
+        public String strDescription;
+        public String strAuthors;
+        public String strPublisher;
+        public String strPublishDate;
+        public String strSubtitle;
+        public String strPageCount;
 
 
         public PostViewHolder(View itemView) {
