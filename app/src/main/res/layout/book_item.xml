@@ -2,11 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="135dp"
+    android:layout_height="wrap_content"
     android:gravity="top"
     android:padding="5dp"
     android:layout_margin="5dp"
-    app:cardElevation="5dp">
+    app:cardElevation="10dp">
 
     <LinearLayout
         android:padding="5dp"
@@ -15,17 +15,19 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:layout_width="80dp"
             android:id="@+id/thumbnail"
-            android:layout_width="84dp"
-            android:layout_height="125dp" />
+            android:layout_height="120dp"
+            android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
-            android:padding="5dp"
+            android:padding="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
+                android:text="loremipsun ispsum loremien"
                 android:maxLines="1"
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
@@ -33,19 +35,12 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:text="loremipsun ispsum loremien"
                 android:id="@+id/authors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="4dp"
                 android:textSize="14sp" />
-
-            <TextView
-                android:maxLines="4"
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:textSize="12sp" />
 
         </LinearLayout>
     </LinearLayout>

@@ -2,10 +2,11 @@ package codes.umair.findthatbook.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class Book {
+public class Book implements Serializable {
 
     private String id;
     @SerializedName("volumeInfo")
@@ -27,7 +28,7 @@ public class Book {
         this.info = info;
     }
 
-    public class BookInfo {
+    public class BookInfo implements Serializable {
 
         private String title;
 
