@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -18,7 +18,6 @@
             android:padding="10dp">
 
             <ImageView
-                android:src="@drawable/ic_launcher_background"
                 android:id="@+id/thumbnail"
                 android:layout_width="84dp"
                 android:layout_height="124dp" />
@@ -27,24 +26,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                android:padding="10dp">
 
                 <TextView
-                    android:text="loremipsun ispsum loremien"
+                    android:textColor="#ffffff"
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:text="loremipsun ispsum loremien"
+                    android:textColor="#ffffff"
                     android:id="@+id/subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:text="loremipsun ispsum loremien"
+                    android:textColor="#ffffff"
                     android:id="@+id/authors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +51,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:text="loremipsun ispsum loremien"
+                    android:textColor="#ffffff"
                     android:id="@+id/pub"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +59,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:text="loremipsun ispsum loremien"
+                    android:textColor="#ffffff"
                     android:id="@+id/pub_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +67,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:text="loremipsun ispsum loremien"
+                    android:textColor="#ffffff"
                     android:id="@+id/page_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,7 +97,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="loremipsun ispsum loremie nandroid:text=loremipsun ispsum loremien"
             android:textSize="16sp" />
     </ScrollView>
 </LinearLayout>

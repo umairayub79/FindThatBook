@@ -5,11 +5,10 @@
     android:layout_height="wrap_content"
     android:gravity="top"
     android:padding="5dp"
-    android:layout_margin="5dp"
-    app:cardElevation="10dp">
+    android:layout_margin="10dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -17,8 +16,7 @@
         <ImageView
             android:layout_width="80dp"
             android:id="@+id/thumbnail"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_height="120dp" />
 
         <LinearLayout
             android:padding="15dp"
@@ -27,15 +25,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="loremipsun ispsum loremien"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
 
             <TextView
-                android:text="loremipsun ispsum loremien"
                 android:id="@+id/authors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
