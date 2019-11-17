@@ -41,53 +41,68 @@ public class BookDetailActivity extends AppCompatActivity {
 
         Book book = (Book) getIntent().getSerializableExtra("book");
         final Book.BookInfo info = book.getInfo();
-        strTitle = info.getTitle();
-        strSubTitle = info.getSubtitle();
-        strAuthors = TextUtils.join(",", info.getAuthors());
-        strDescription = info.getDescription();
-        strThumbLink = info.getImageLinks().get(THUMBNAIL_URI_KEY);
-        strInfoLink = info.getInfoLink();
-        strPageCount = info.getPageCount();
-        strPub = info.getPublisher();
-        strPubDate = info.getPublishedDate();
+        if (info != null) {
+            if (info.getTitle() != null) {
+                strTitle = info.getTitle();
 
+            } else {
+                strTitle = "Title Unavailable";
+            }
+            if (info.getSubtitle() != null) {
+                strSubTitle = info.getSubtitle();
+            } else {
+                strSubTitle = "Subtitle Unavailable";
+            }
+            if (info.getAuthors() != null) {
+                strAuthors = TextUtils.join(", ", info.getAuthors());
 
-        if (strTitle != null) {
-            title.setText(strTitle);
-            setTitle(strTitle);
+            } else {
+                strAuthors = "Unavailable";
+            }
+            if (info.getPublisher() != null) {
+                strPub = info.getPublisher();
 
+            } else {
+                strPub = "Unavailable";
+            }
+            if (info.getPublishedDate() != null) {
+                strPubDate = info.getPublishedDate();
+
+            } else {
+                strPubDate = "Unavailable";
+            }
+            if (info.getPageCount() != null) {
+                strPageCount = info.getPageCount();
+
+            } else {
+                strPageCount = "Unknown";
+            }
+
+            if (info.getDescription() != null) {
+                strDescription = info.getDescription();
+
+            } else {
+                strDescription = "Description Unavailable";
+            }
+            if (info.getImageLinks() != null) {
+                strThumbLink = info.getImageLinks().get(THUMBNAIL_URI_KEY);
+            }
         }
-        if (strSubTitle != null) {
-            subtitle.setText(strSubTitle);
+        title.setText(strTitle);
+        setTitle(strTitle);
+        subtitle.setText(strSubTitle);
+        pubDate.setText("Published on " + strPubDate);
+        pub.setText("Publisher : " + strPub);
+        pageCount.setText(strPageCount + " Pages");
+        description.setText(strDescription);
+        authors.setText("Authors : " + strAuthors);
 
-        }
-        if (strPubDate != null) {
-            pubDate.setText("Published on " + strPubDate);
+        Picasso.get()
+                .load(strThumbLink)
+                .centerCrop()
+                .fit()
+                .into(thumbnail);
 
-        }
-        if (strPub != null) {
-            pub.setText("Publisher : " + strPub);
-
-        }
-        if (strPageCount != null) {
-            pageCount.setText(strPageCount + " Pages");
-
-        }
-        if (strDescription != null) {
-            description.setText(strDescription);
-
-        }
-        if (strThumbLink != null) {
-            Picasso.get()
-                    .load(strThumbLink)
-                    .centerCrop()
-                    .fit()
-                    .into(thumbnail);
-        }
-        if (strAuthors != null) {
-            authors.setText("Authors : " + strAuthors);
-
-        }
 
         if (strInfoLink != null) {
 
