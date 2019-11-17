@@ -1,102 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true"
+    tools:context=".activities.BookDetailActivity">
 
-    <LinearLayout
-        android:background="@color/colorPrimary"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <LinearLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="84dp"
-                android:layout_height="124dp" />
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="top"
+            app:expandedTitleTextAppearance="@style/ExpandedTitleAppearance"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="110dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:textColor="#ffffff"
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp" />
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="84dp"
+                    android:layout_height="124dp"
+                    android:layout_gravity="center" />
 
-                <TextView
-                    android:textColor="#ffffff"
-                    android:id="@+id/subtitle"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp" />
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-                <TextView
-                    android:textColor="#ffffff"
-                    android:id="@+id/authors"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:textSize="15sp" />
 
-                <TextView
-                    android:textColor="#ffffff"
-                    android:id="@+id/pub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:textColor="@android:color/white"
+                        android:id="@+id/subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:textColor="#ffffff"
-                    android:id="@+id/pub_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:paddingTop="3dp"
+                        android:id="@+id/authors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
 
-                <TextView
-                    android:textColor="#ffffff"
-                    android:id="@+id/page_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="4dp"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:paddingTop="3dp"
+                        android:id="@+id/pub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/btn_openLink"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Open in Play Book" />
+                    <TextView
+                        android:paddingTop="3dp"
+                        android:id="@+id/pub_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:paddingTop="3dp"
+                        android:id="@+id/page_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </LinearLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_openlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_action_go"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textSize="16sp" />
-    </ScrollView>
-</LinearLayout>
+    <include layout="@layout/content_scrolling" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

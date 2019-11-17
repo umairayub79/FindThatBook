@@ -12,15 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:label="Search Results"
             android:name=".activities.SearchResultsActivity"
+            android:label="Search Results"
             android:parentActivityName=".activities.SearchResultsActivity" />
         <activity
             android:name=".activities.BookDetailActivity"
-            android:parentActivityName=".activities.BookDetailActivity" />
-        <activity
-            android:name=".activities.MainActivity">
+            android:parentActivityName=".activities.BookDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
