@@ -43,7 +43,6 @@ public class BookDetailActivity extends AppCompatActivity {
         pubDate = findViewById(R.id.pub_date);
         btn_openLink = findViewById(R.id.btn_openlink);
 
-
         Book book = (Book) getIntent().getSerializableExtra("book");
         final Book.BookInfo info = book.getInfo();
         if (info != null) {
