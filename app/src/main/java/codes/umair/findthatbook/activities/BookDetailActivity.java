@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import codes.umair.findthatbook.R;
 import codes.umair.findthatbook.models.Book;
+import spencerstudios.com.bungeelib.Bungee;
 
 public class BookDetailActivity extends AppCompatActivity {
 
@@ -127,5 +128,11 @@ public class BookDetailActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Bungee.inAndOut(BookDetailActivity.this);
     }
 }

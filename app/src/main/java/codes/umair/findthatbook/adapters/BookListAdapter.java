@@ -20,6 +20,7 @@ import java.util.List;
 import codes.umair.findthatbook.R;
 import codes.umair.findthatbook.activities.BookDetailActivity;
 import codes.umair.findthatbook.models.Book;
+import spencerstudios.com.bungeelib.Bungee;
 
 
 
@@ -66,6 +67,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                 Intent detailIntent = new Intent(context, BookDetailActivity.class);
                 detailIntent.putExtra("book", book);
                 context.startActivity(detailIntent);
+                Bungee.zoom(context);
 
             }
         });

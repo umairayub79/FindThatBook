@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".activities.AboutActivity"
+            android:label="About" />
         <activity
             android:name=".activities.SearchResultsActivity"
             android:label="Search Results"
@@ -21,7 +23,6 @@
             android:name=".activities.BookDetailActivity"
             android:parentActivityName=".activities.BookDetailActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -17,6 +17,7 @@ import codes.umair.findthatbook.models.SearchResult;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import spencerstudios.com.bungeelib.Bungee;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
@@ -64,5 +65,11 @@ public class SearchResultsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Bungee.inAndOut(SearchResultsActivity.this);
     }
 }
