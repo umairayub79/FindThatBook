@@ -10,6 +10,11 @@
     tools:context=".activities.MainActivity">
 
 
+    <ImageView
+        android:id="@+id/img_appIcon"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:src="@mipmap/ic_launcher_round" />
 
     <EditText
         android:textAlignment="center"

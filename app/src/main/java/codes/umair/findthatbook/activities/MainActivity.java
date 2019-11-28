@@ -6,8 +6,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_submit;
     EditText edt_query;
-
+    ImageView img_appIcon;
 
 
     @Override
@@ -28,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn_submit = findViewById(R.id.btn_submit);
         edt_query = findViewById(R.id.edit_query);
-
-
+        img_appIcon = findViewById(R.id.img_appIcon);
+        img_appIcon.startAnimation(inFromTop());
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private Animation inFromTop() {
+        Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.anim_logo);
+        return animation;
     }
 
 
