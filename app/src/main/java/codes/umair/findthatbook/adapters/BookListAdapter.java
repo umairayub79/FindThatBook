@@ -90,7 +90,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
 //            viewToAnimate.startAnimation(animation);
 //            lastPosition = position;
 //        }
-        Animation animation = AnimationUtils.loadAnimation(context, (position > lastPosition) ? android.R.anim.slide_in_left : android.R.anim.slide_out_right);
+        Animation animation = AnimationUtils.loadAnimation(context, (position > lastPosition) ? R.anim.anim_up : R.anim.anim_down);
         viewToAnimate.startAnimation(animation);
         lastPosition = position;
     }
