@@ -18,6 +18,6 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Bungee.zoom(AboutActivity.this);
+        Bungee.slideDown(AboutActivity.this);
     }
 }

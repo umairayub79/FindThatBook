@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, SearchResultsActivity.class);
         i.putExtra("query", query);
         startActivity(i);
-        Bungee.inAndOut(MainActivity.this);
+        Bungee.slideUp(MainActivity.this);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -120,11 +120,10 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.action_about) {
             Intent aboutIntent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(aboutIntent);
-            Bungee.zoom(MainActivity.this);
+            Bungee.slideUp(MainActivity.this);
 
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -75,7 +75,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                 Intent detailIntent = new Intent(context, BookDetailActivity.class);
                 detailIntent.putExtra("book", book);
                 context.startActivity(detailIntent);
-                Bungee.zoom(context);
+                Bungee.slideUp(context);
 
             }
         });

@@ -18,6 +18,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import spencerstudios.com.bungeelib.Bungee;
+import umairayub.madialog.MaDialog;
+import umairayub.madialog.MaDialogListener;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
@@ -46,7 +48,8 @@ public class SearchResultsActivity extends AppCompatActivity {
         SearchBook(query);
     }
 
-    public void SearchBook(String query) {
+    public void SearchBook(final String query) {
+        progressBar.setVisibility(View.VISIBLE);
         Call<SearchResult> call = api.searchBooks(query, MAX_RESULTS);
         call.enqueue(new Callback<SearchResult>() {
             @Override
@@ -61,7 +64,18 @@ public class SearchResultsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SearchResult> call, Throwable t) {
-
+                progressBar.setVisibility(View.GONE);
+                new MaDialog.Builder(SearchResultsActivity.this)
+                        .setTitle("Whoops!")
+                        .setMessage("Failed to Load Books")
+                        .setPositiveButtonText("Try again")
+                        .setPositiveButtonListener(new MaDialogListener() {
+                            @Override
+                            public void onClick() {
+                                SearchBook(query);
+                            }
+                        })
+                        .build();
             }
         });
 
@@ -70,6 +84,6 @@ public class SearchResultsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Bungee.inAndOut(SearchResultsActivity.this);
+        Bungee.slideDown(SearchResultsActivity.this);
     }
 }

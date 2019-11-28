@@ -133,6 +133,6 @@ public class BookDetailActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Bungee.inAndOut(BookDetailActivity.this);
+        Bungee.slideDown(BookDetailActivity.this);
     }
 }
