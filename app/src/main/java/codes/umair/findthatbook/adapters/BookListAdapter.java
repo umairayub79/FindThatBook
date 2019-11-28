@@ -7,9 +7,12 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -32,6 +35,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
     private Context context;
     private static final String THUMBNAIL_URI_KEY = "smallThumbnail";
     private List<Book> data = new ArrayList<>();
+    private int lastPosition = -1;
 
 
     @Override
@@ -39,6 +43,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         final Book book = data.get(position);
         final Book.BookInfo info = book.getInfo();
         if (info != null) {
+//            Random rnd = new Random();
+//            int currentColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+//            holder.parent.setCardBackgroundColor(currentColor);
 
             //Title
             holder.title.setText(info.getTitle());
@@ -60,6 +67,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
                         .into(holder.image);
 
             }
+            setAnimation(holder.parent, position);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +83,17 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
 
     }
 
+    private void setAnimation(View viewToAnimate, int position) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+//        if (position > lastPosition) {
+//            Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+//            viewToAnimate.startAnimation(animation);
+//            lastPosition = position;
+//        }
+        Animation animation = AnimationUtils.loadAnimation(context, (position > lastPosition) ? android.R.anim.slide_in_left : android.R.anim.slide_out_right);
+        viewToAnimate.startAnimation(animation);
+        lastPosition = position;
+    }
 
     @Override
     public PostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -115,6 +134,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
         public TextView authors;
         public TextView description;
         public String path;
+        public CardView parent;
 
 
         public PostViewHolder(View itemView) {
@@ -123,6 +143,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.PostVi
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
             authors = itemView.findViewById(R.id.authors);
+            parent = itemView.findViewById(R.id.item_root);
 
 
         }
