@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     Button btn_submit;
     EditText edt_query;
     ImageView img_appIcon;
-
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
