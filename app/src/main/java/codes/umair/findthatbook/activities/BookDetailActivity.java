@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 import codes.umair.findthatbook.R;
 import codes.umair.findthatbook.models.Book;
 import spencerstudios.com.bungeelib.Bungee;
+import umairayub.madialog.MaDialog;
+import umairayub.madialog.MaDialogListener;
 
 public class BookDetailActivity extends AppCompatActivity {
 
@@ -92,6 +94,9 @@ public class BookDetailActivity extends AppCompatActivity {
             if (info.getImageLinks() != null) {
                 strThumbLink = info.getImageLinks().get(THUMBNAIL_URI_KEY);
             }
+            if (info.getInfoLink() != null) {
+                strInfoLink = info.getInfoLink();
+            }
         }
         setTitle(strTitle);
         subtitle.setText(strSubTitle);
@@ -115,6 +120,23 @@ public class BookDetailActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(strInfoLink));
                     startActivity(browserIntent);
+                }
+            });
+        } else {
+            btn_openLink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    new MaDialog.Builder(BookDetailActivity.this)
+                            .setTitle("Uh ho!")
+                            .setMessage("Link Not Available")
+                            .setPositiveButtonText("Okay")
+                            .setPositiveButtonListener(new MaDialogListener() {
+                                @Override
+                                public void onClick() {
+
+                                }
+                            })
+                            .build();
                 }
             });
         }
